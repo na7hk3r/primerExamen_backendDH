@@ -1,4 +1,6 @@
 package service;
+import dao.DAOArrayList;
+import dao.DAOH2;
 import dao.iDAO;
 import model.Odontologo;
 
@@ -6,6 +8,10 @@ import java.util.List;
 
 public class OdontologoService {
     private iDAO<Odontologo> odontologoiDAO;
+
+    public OdontologoService() {
+        this.odontologoiDAO = new DAOArrayList();
+    }
 
     public iDAO<Odontologo> getOdontologoiDAO() {
         return odontologoiDAO;
@@ -20,8 +26,6 @@ public class OdontologoService {
     }
     public List<Odontologo> listarTodos(){
         return odontologoiDAO.listarTodos();
-
     }
-
 
 }
