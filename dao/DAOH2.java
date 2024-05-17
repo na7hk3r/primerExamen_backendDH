@@ -1,5 +1,4 @@
 package dao;
-import dao.iOdontologoDAO;
 import model.Odontologo;
 import org.apache.log4j.Logger;
 
@@ -8,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class OdontologoDAO implements iOdontologoDAO<Odontologo>{
+public class DAOH2 implements iDAO<Odontologo> {
 
     private final static String DB_JDBC_DRIVER = "org.h2.Driver";
     private final static String DB_URL = "jdbc:h2:~/parcial_odontologos";
@@ -30,7 +29,7 @@ public class OdontologoDAO implements iOdontologoDAO<Odontologo>{
     // Listado
     private final static String SQL_FINDALL = "SELECT * FROM ODONTOLOGOS";
 
-    private static final Logger logger = Logger.getLogger(OdontologoDAOH2.class);
+    private static final Logger logger = Logger.getLogger(DAOH2.class);
 
     public static Connection getConnection()  {
         Connection connection = null;
@@ -61,7 +60,7 @@ public class OdontologoDAO implements iOdontologoDAO<Odontologo>{
             psInsert.execute();
             logger.info("Se ha guardado correctamente a la matrícula " + odontologo.getNumeroMatricula() + " correspondiente a " + odontologo.getNombre() + odontologo.getApellido() + " en la Base de Datos");
             psInsert.close();
-        } catch (SQLExcepetion e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             logger.error("Error, no se pudo agregar");
         }
@@ -70,7 +69,7 @@ public class OdontologoDAO implements iOdontologoDAO<Odontologo>{
 
     @Override
     public List<Odontologo> listarTodos(){
-        PreparedStatement psListarTodos=null;
+        PreparedStatement psListarTodos= null;
         List<Odontologo> odontologos= new ArrayList<>();
         Odontologo odontologo= null;
 
@@ -92,7 +91,7 @@ public class OdontologoDAO implements iOdontologoDAO<Odontologo>{
             psListarTodos.close();
         }catch (SQLException e){
             e.printStackTrace();
-            logger.error("Error, no podemos mostrarte los odontólogos.")
+            logger.error("Error, no podemos mostrarte los odontólogos.");
         }
         return odontologos;
     }

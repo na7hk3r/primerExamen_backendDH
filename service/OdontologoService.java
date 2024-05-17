@@ -1,26 +1,25 @@
 package service;
-import dao.iOdontologoDAO;
+import dao.iDAO;
 import model.Odontologo;
 
 import java.util.List;
 
 public class OdontologoService {
-    private iOdontologoDAO<Odontologo> odontologoiOdontologoDAO;
-    public OdontologoService(iOdontologoDAO<Odontologo> odontologoiOdontologoDAO {
-        this.odontologoiOdontologoDAO;
+    private iDAO<Odontologo> odontologoiDAO;
+
+    public iDAO<Odontologo> getOdontologoiDAO() {
+        return odontologoiDAO;
     }
-    public iOdontologoDAO<Odontologo> getOdontologoiOdontologoDAO{
-        return odontologoiOdontologoDAO;
-    }
-    public void setOdontologoiOdontologoDAO(iOdontologoDAO<Odontologo> odontologoiOdontologoDAO){
-        this.odontologoiOdontologoDAO = odontologoiOdontologoDAO;
+
+    public void setOdontologoiDAO(iDAO<Odontologo> odontologoiDAO) {
+        this.odontologoiDAO = odontologoiDAO;
     }
 
     public Odontologo guardar(Odontologo odontologo){
-        return odontologoiOdontologoDAO.guardar(odontologo);
+        return odontologoiDAO.guardar(odontologo);
     }
     public List<Odontologo> listarTodos(){
-        return odontologoiOdontologoDAO.listarTodos();
+        return odontologoiDAO.listarTodos();
 
     }
 
